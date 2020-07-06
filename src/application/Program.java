@@ -15,7 +15,7 @@ public class Program {
 		
 		List<Employee> list = new ArrayList<>();
 		
-		System.out.println("Enter the number of employees: ");
+		System.out.print("Enter the number of employees: ");
 		int n = sc.nextInt();
 		
 		for (int i=1; i<=n; i++) {
@@ -32,14 +32,20 @@ public class Program {
 			if (ch == 'y') {
 				System.out.print("Additional charge: ");
 				double additionalCharge = sc.nextDouble();
-				Employee emp = new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge);
-				list.add(emp);
+				list.add(new OutsourcedEmployee(name, hours, valuePerHour, additionalCharge));
 			}
 			else {
-				Employee emp = new Employee(name, hours, valuePerHour);
-				list.add(emp);
+				list.add(new Employee(name, hours, valuePerHour));
 			}
-		}
+		}	
+			System.out.println();
+			System.out.println("PAYMENTS:");
+			
+			for (Employee emp: list) {
+				System.out.println(emp.getName() + " - R$ " + String.format("%.2f", emp.payment()));
+			}
+			
+		
 		
 		
 		
